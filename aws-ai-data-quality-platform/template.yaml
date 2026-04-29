@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: AI Data Quality Monitoring Platform - AWS Serverless Template
+
+Resources:
+  DataQualityBucket:
+    Type: AWS::S3::Bucket
+
+  ValidateDataFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: validate-data-quality
+      Runtime: python3.10
+      Handler: lambda_function.lambda_handler
+      CodeUri: lambda/validate_data/
+      Timeout: 900
+      MemorySize: 1024
+
+  DetectAnomaliesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: detect-data-anomalies
+      Runtime: python3.10
+      Handler: lambda_function.lambda_handler
+      CodeUri: lambda/detect_anomalies/
+      Timeout: 900
+      MemorySize: 1024
+
+  SendAlertFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: send-data-quality-alert
+      Runtime: python3.10
+      Handler: lambda_function.lambda_handler
+      CodeUri: lambda/send_alert/
+      Timeout: 60
+      MemorySize: 256
