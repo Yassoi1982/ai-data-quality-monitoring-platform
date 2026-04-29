@@ -1,0 +1,23 @@
+{
+  "Comment": "AI Data Quality Monitoring Pipeline",
+  "StartAt": "ValidateData",
+  "States": {
+    "ValidateData": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:validate-data-quality",
+      "ResultPath": "$.validation_result",
+      "Next": "DetectAnomalies"
+    },
+    "DetectAnomalies": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:detect-data-anomalies",
+      "ResultPath": "$.anomaly_result",
+      "Next": "SendAlert"
+    },
+    "SendAlert": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:send-data-quality-alert",
+      "End": true
+    }
+  }
+}
