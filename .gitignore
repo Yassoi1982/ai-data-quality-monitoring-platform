@@ -21,3 +21,11 @@ outputs/*.pkl
 .DS_Store
 Thumbs.db
 .vscode/
+
+__pycache__/
+*.pyc
+outputs/*.csv
+datasets/creditcard.csv
+*.csv
+.venv/
+.env
