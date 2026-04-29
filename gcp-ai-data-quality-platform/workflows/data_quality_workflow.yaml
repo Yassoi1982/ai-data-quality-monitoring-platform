@@ -1,0 +1,24 @@
+main:
+  steps:
+    - validate:
+        call: http.post
+        args:
+          url: https://REGION-project.cloudfunctions.net/validate_data
+          body: ${input}
+        result: validate_result
+
+    - anomaly:
+        call: http.post
+        args:
+          url: https://REGION-project.cloudfunctions.net/detect_anomalies
+          body: ${input}
+        result: anomaly_result
+
+    - alert:
+        call: http.post
+        args:
+          url: https://REGION-project.cloudfunctions.net/send_alert
+          body:
+            data_quality_score: ${validate_result.body.data_quality_score}
+            anomaly_count: ${anomaly_result.body.anomaly_count}
+            threshold: ${input.threshold}

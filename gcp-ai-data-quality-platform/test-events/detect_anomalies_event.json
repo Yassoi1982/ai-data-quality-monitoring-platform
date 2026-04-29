@@ -1,0 +1,5 @@
+{
+  "bucket": "your-gcp-bucket",
+  "file": "creditcard.csv",
+  "threshold": 90
+}
