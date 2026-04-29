@@ -1,0 +1,6 @@
+{
+  "azure_storage_connection_string": "your-azure-storage-connection-string",
+  "container_name": "data-quality-input",
+  "blob_name": "creditcard.csv",
+  "threshold": 90
+}

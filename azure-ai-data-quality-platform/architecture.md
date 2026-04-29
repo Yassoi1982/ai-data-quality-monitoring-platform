@@ -1,12 +1,8 @@
-# Azure AI Data Quality Monitoring Platform
-
-## Overview
-
-This module implements the Azure version of the AI Data Quality Monitoring Platform.
-
-## Architecture
+# Azure Architecture
 
 ```text
+User uploads creditcard.csv
+        ↓
 Azure Blob Storage
         ↓
 Azure Function: Validate Data
